@@ -1,4 +1,4 @@
-module github.com/hudavianto/go-grpc-http-rest-microservice-tutorial
+module github.com/hudavianto92/go-grpc-http-rest-microservice-tutorial
 
 go 1.14
 
