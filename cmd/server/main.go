@@ -1,6 +1,5 @@
 package server
 
-
 import (
 	"context"
 	"database/sql"
@@ -10,8 +9,8 @@ import (
 	// mysql driver
 	_ "github.com/go-sql-driver/mysql"
 
-	"github.com/hudavianto92/go-grpc-http-rest-microservice-tutorial/pkg/protocol/grpc"
-	"github.com/hudavianto92/go-grpc-http-rest-microservice-tutorial/pkg/service/v1"
+	"github.com/hudavianto92/go-grpc-http-rest-microservice-tutorial/pkg/protokol/grpc"
+	v1 "github.com/hudavianto92/go-grpc-http-rest-microservice-tutorial/pkg/service/v1"
 )
 
 // Config is configuration for Server
