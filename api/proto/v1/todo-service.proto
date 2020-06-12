@@ -19,7 +19,7 @@ message CreateRequest {
 
     string api = 1;
 
-    ToDo todo = 2;
+    ToDo toDo = 2;
 }
 
 message CreateResponse {
@@ -29,7 +29,66 @@ message CreateResponse {
     int64 id = 2;
 }
 
+message ReadRequest{
+    string api = 1;
+
+    int64 id = 2;
+}
+
+message ReadResponse{
+    string api = 1;
+
+    ToDo toDo = 2;
+}
+
+message UpdateRequest{
+    // API versioning: it is my best practice to specify version explicitly
+    string api = 1;
+
+    // Task entity to update
+    ToDo toDo = 2;
+}
+
+message updateResponse{
+    string api = 1;
+
+    int64 updated = 2;
+}
+
+message DeleteRequest {
+    string api = 1;
+
+    int64 id = 2;
+}
+
+message DeleteResponse {
+    string api = 1;
+
+    int64 deleted = 2;
+}
+
+message ReadAllRequest{
+    string api = 1;
+}
+
+message ReadAllResponse{
+
+    string api = 1;
+
+    repeated ToDo toDos = 2;
+}
+
 service ToDoService{
 
     rpc Create (CreateRequest) returns (CreateResponse);
+    
+    rpc  Read (ReadRequest) returns (ReadResponse);
+
+    rpc Update (UpdateRequest) returns (updateResponse);
+
+    rpc Delete (DeleteRequest) returns (DeleteResponse);
+
+    rpc ReadAll (ReadAllRequest) returns (ReadAllResponse);
+
+
 }
