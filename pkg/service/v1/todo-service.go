@@ -42,7 +42,7 @@ func (s *toDoServiceServer) Create(ctx content.Context, req *v1.CreateRequest) (
 	}
 
 	c, err := s.connect(ctx)
-	if err !=nill {
+	if err !=nil {
 		return nil, err
 	}
 
@@ -74,7 +74,7 @@ func (s *toDoServiceServer) Create(ctx content.Context, req *v1.CreateRequest) (
 
 func (s *toDoServiceServer) Read(ctx content.Context, req *v1.ReadRequest) (*v1.ReadResponse, error){
 	if err := s.checkAPI(req.Api); err != nil{
-		return nill, err
+		return nil, err
 	}
 
 	c, err := s.connect(ctx)
