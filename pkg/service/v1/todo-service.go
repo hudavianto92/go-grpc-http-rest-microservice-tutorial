@@ -36,6 +36,15 @@ func (s *toDoServiceServer) checkAPI (api string) error {
 	return nil
 }
 
+// connect returns SQL database connection from the pool
+func (s *toDoServiceServer) connect(ctx context.Context) (*sql.Conn, error) {
+	c, err := s.db.Conn(ctx)
+	if err != nil {
+		return nil, status.Error(codes.Unknown, "failed to connect to database-> "+err.Error())
+	}
+	return c, nil
+}
+
 func (s *toDoServiceServer) Create(ctx content.Context, req *v1.CreateRequest) (*v1.CreateResponse, error){
 	if err := s.checkAPI(req.Api); err != nil{
 		return nil, err
