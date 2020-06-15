@@ -171,4 +171,11 @@ service ToDoService {
             }
         };
     }
-    
+
+    // Delete todo task
+    rpc Delete(DeleteRequest) returns (DeleteResponse){
+        option (google.api.http) = {
+            delete: "/v1/todo/{id}"
+        };
+    }
+}
