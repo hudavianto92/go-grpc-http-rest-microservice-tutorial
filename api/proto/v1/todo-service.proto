@@ -1,26 +1,25 @@
 syntax = "proto3";
-
 package v1;
 
 import "google/protobuf/timestamp.proto";
 import "google/api/annotations.proto";
 import "protoc-gen-swagger/options/annotations.proto";
 
-option (grpc.gateway.protoc_gen_swagger.options.openaviv2_swagger) = {
-    info : {
-        title : "ToDo service";
-        version : "1.0"
-        contact : {
-            name: "go-grpc-http-rest-microservice-tutorial project";
+option (grpc.gateway.protoc_gen_swagger.options.openapiv2_swagger) = {
+	info: {
+		title: "ToDo service";
+		version: "1.0";
+		contact: {
+			name: "go-grpc-http-rest-microservice-tutorial project";
 			url: "https://github.com/hudavianto92/go-grpc-http-rest-microservice-tutorial";
-			email: "hudavianto@gmail.com";
+			email: "medium@amsokol.com";
         };
     };
-    schemes : HTTP;
-    consumes : "application/json";
-    produces : "application/json";
-    response : {
-        key: "404";
+    schemes: HTTP;
+    consumes: "application/json";
+    produces: "application/json";
+    responses: {
+		key: "404";
 		value: {
 			description: "Returned when the resource does not exist.";
 			schema: {
@@ -29,7 +28,7 @@ option (grpc.gateway.protoc_gen_swagger.options.openaviv2_swagger) = {
 				}
 			}
 		}
-    }
+	}
 };
 
 // Task we have to do
@@ -136,41 +135,40 @@ message ReadAllResponse{
     repeated ToDo toDos = 2;
 }
 
+// Service to manage list of todo tasks
 service ToDoService {
-
-    rpc ReadAll (ReadAllRequest) returns (ReadAllResponse){
+    // Read all todo tasks
+    rpc ReadAll(ReadAllRequest) returns (ReadAllResponse){
         option (google.api.http) = {
-            get : "/v1/todo/all"
+            get: "/v1/todo/all"
         };
     }
-}
 
- // Create new todo task
- rpc Create(CreateRequest) returns (CreateResponse){
-    option (google.api.http) = {
-        post: "/v1/todo"
-        body: "*"
-    };
-}
-
-// Read todo task
-rpc Read(ReadRequest) returns (ReadResponse){
-    option (google.api.http) = {
-        get: "/v1/todo/{id}"
-    };
-}
-
-// Update todo task
-rpc Update(UpdateRequest) returns (UpdateResponse){
-    option (google.api.http) = {
-        put: "/v1/todo/{toDo.id}"
-        body: "*"
-
-        additional_bindings {
-            patch: "/v1/todo/{toDo.id}"
+    // Create new todo task
+    rpc Create(CreateRequest) returns (CreateResponse){
+        option (google.api.http) = {
+            post: "/v1/todo"
             body: "*"
-        }
-    };
-}
+        };
+    }
 
+    // Read todo task
+    rpc Read(ReadRequest) returns (ReadResponse){
+        option (google.api.http) = {
+            get: "/v1/todo/{id}"
+        };
+    }
 
+    // Update todo task
+    rpc Update(UpdateRequest) returns (UpdateResponse){
+        option (google.api.http) = {
+            put: "/v1/todo/{toDo.id}"
+            body: "*"
+
+            additional_bindings {
+                patch: "/v1/todo/{toDo.id}"
+                body: "*"
+            }
+        };
+    }
+    

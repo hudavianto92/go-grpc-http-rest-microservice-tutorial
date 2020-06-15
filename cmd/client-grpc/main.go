@@ -9,7 +9,7 @@ import (
 	"github.com/golang/protobuf/ptypes"
 	"google.golang.org/grpc"
 
-	"github.com/hudavianto92/go-grpc-http-rest-microservice-tutorial/pkg/api/v1"
+	v1 "github.com/hudavianto92/go-grpc-http-rest-microservice-tutorial/pkg/api/v1"
 )
 
 const (
